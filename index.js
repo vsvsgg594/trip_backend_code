@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import cors from "cors";
+
 import ConnectDB from "./database/ConnectDB.js";
 import userRoutes from "./routes/userRoutes.js";
 import User from "./model/user.js";
@@ -8,6 +8,7 @@ import jwt from 'jsonwebtoken';
 import packagesRoute from './routes/packagesRoute.js';
 import path from 'path';
 import { fileURLToPath } from "url";
+import cors from 'cors';
 
 
 // Properly derive __dirname for ES modules
@@ -18,11 +19,15 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
+
 app.use(cors({
-  origin: "https://your-github-username.github.io",
-  methods: "GET,POST,PUT,DELETE",
-  credentials: true
+  origin: "http://localhost:5173", // Set your frontend origin
+  credentials: true, // Allow credentials (if using cookies or auth headers)
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
+
+
 app.use('/uploads', express.static('uploads'));
 
 ConnectDB();
