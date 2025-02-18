@@ -19,13 +19,13 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-
 app.use(cors({
-  origin: "http://localhost:5173", // Set your frontend origin
+  origin: "https://trip-frontend-codes-3.onrender.com", // Set your frontend's deployed URL
   credentials: true, // Allow credentials (if using cookies or auth headers)
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
+
 
 
 app.use('/uploads', express.static('uploads'));
