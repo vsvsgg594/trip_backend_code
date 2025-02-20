@@ -19,13 +19,13 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-// app.use(cors({
-//   origin: "https://trip-frontend-codes-3.onrender.com", // Set your frontend's deployed URL
-//   credentials: true, // Allow credentials (if using cookies or auth headers)
-//   methods: ["GET", "POST", "PUT", "DELETE"],
-//   allowedHeaders: ["Content-Type", "Authorization"]
-// }));
-app.use(cors({origin:"*"}))
+app.use(cors({
+  origin: "https://tripjinny.kbsoftwaresolutions.com", // No trailing slash
+  credentials: true, // Keep if using cookies/sessions
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization", "Accept"]
+}));
+// app.use(cors({origin:"*"}))
 
 
 app.use('/uploads', express.static('uploads'));
