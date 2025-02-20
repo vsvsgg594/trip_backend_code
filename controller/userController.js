@@ -25,8 +25,9 @@ export const registerUser=async(req,res)=>{
         const verificationToken=uuidv4();
         const newUser=new User({name,email,password,username,isVerified:true,verificationToken});
         await newUser.save();
-        const verificationLink = `https://trip-backend-code-1.onrender.com/${verificationToken}`;
-;
+        // const verificationLink = `https://trip-backend-code-1.onrender.com/${verificationToken}`;
+        const verificationLink=`https://trip-backend-code.onrender.com/verify/${verificationToken}`;
+
         const mailOption={
             from:process.env.EMAIL,
             to:email,
