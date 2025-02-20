@@ -25,7 +25,7 @@ export const registerUser=async(req,res)=>{
         const verificationToken=uuidv4();
         const newUser=new User({name,email,password,username,isVerified:true,verificationToken});
         await newUser.save();
-        const verificationLink = `https://trip-backend-code.onrender.com/verify/${verificationToken}`;
+        const verificationLink = `http://localhost:8000/verify/${verificationToken}`;
         const mailOption={
             from:process.env.EMAIL,
             to:email,
@@ -95,7 +95,7 @@ export const forgotPassword=async(req,res)=>{
         user.resetTokenExpires = new Date(Date.now() + 15 * 60 * 1000);
         await user.save();
 
-        const resetLink = `https://trip-backend-code.onrender.com/reset-password/${resetToken}`;
+        const resetLink = `http://localhost:8000/reset-password/${resetToken}`;
         const mailOption={
            from:process.env.EMAIL,
            to:email,
